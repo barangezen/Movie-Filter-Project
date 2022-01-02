@@ -4,12 +4,12 @@ export interface IOption {
   key: string;
   value: string;
 }
-export interface MyDropdownFilter {
+export interface IMyDropdownFilterProps {
   options: IOption[];
   dropdownName: string;
   className?: string;
 }
-export const MyDropdownFilter: React.FC<MyDropdownFilter> = ({
+export const MyDropdownFilter: React.FC<IMyDropdownFilterProps> = ({
   options,
   dropdownName,
   className,

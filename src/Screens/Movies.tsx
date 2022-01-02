@@ -10,7 +10,7 @@ import useFetch from "../hooks/getFeedData";
 
 export const Movies = () => {
   const [movieData, setMovieData] = useState();
-  const { data, status, error } = useFetch();
+  const { data, status } = useFetch();
   const options: IOption[] = [
     {
       key: "ascTitle",
@@ -30,15 +30,12 @@ export const Movies = () => {
     },
   ];
   useEffect(() => {
-    const movie = data?.entries.map((movie: any) => {
-      if (movie.programType === "movie") {
-        return movie;
-      }
+    const movies = data?.entries.filter((movie: any) => {
+      return movie.programType === "movie" && movie.releaseYear >= 2010;
     });
-    setMovieData(movie);
+    setMovieData(movies);
   }, [data]);
   console.log("movieData", movieData);
-  console.log("data", data);
   return (
     <Container>
       {status === "loading" && <p>{"Loading..."}</p>}
