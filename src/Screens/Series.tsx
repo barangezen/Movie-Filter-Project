@@ -4,14 +4,13 @@ import {
   IOption,
   MyDropdownFilter,
 } from "../Components/DropdownFilter/MyDropdownFilter";
-import { MovieList } from "../Components/MovieList/MovieList";
 import { MySearch } from "../Components/Search/MySearch";
 import { SeriesList } from "../Components/SeriesList/SeriesList";
 import useFetch from "../hooks/getFeedData";
 
 export const Series = () => {
   const [seriesData, setSeriesData] = useState();
-  const { data, status, error } = useFetch();
+  const { data, status } = useFetch();
   const options: IOption[] = [
     {
       key: "ascTitle",
@@ -31,10 +30,8 @@ export const Series = () => {
     },
   ];
   useEffect(() => {
-    const series = data?.entries.map((series: any) => {
-      if (series.programType === "series") {
-        return series;
-      }
+    const series = data?.entries.filter((serie: any) => {
+      return serie.programType === "series" && serie.releaseYear >= 2010;
     });
     setSeriesData(series);
   }, [data]);
