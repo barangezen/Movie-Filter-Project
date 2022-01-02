@@ -1,19 +1,25 @@
 import { Form, FormControl, Button } from "react-bootstrap";
-
+import "./MySearch.css";
 export interface IMySearchProps {
   buttonText: string;
+  placeholder?: string;
+  btnVariant: string;
 }
 
-export const MySearch: React.FC<IMySearchProps> = ({ buttonText }) => {
+export const MySearch: React.FC<IMySearchProps> = ({
+  buttonText,
+  placeholder,
+  btnVariant,
+}) => {
   return (
-    <Form className="d-flex">
+    <Form className={"searchStyle"}>
       <FormControl
         type="search"
-        placeholder="Search"
+        placeholder={placeholder}
         className="me-2"
         aria-label="Search"
       />
-      <Button variant="outline-success">{buttonText}</Button>
+      <Button variant={btnVariant}>{buttonText}</Button>
     </Form>
   );
 };
