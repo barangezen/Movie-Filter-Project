@@ -1,18 +1,22 @@
-import { Row, Col, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+export interface IMovie {
+  title: string;
+  description?: string;
+  image: string;
+  programType?: string;
+  releaseYear?: number;
+}
 export interface IContentCardProps {
-  cardTitle: string;
-  cardImg: string;
+  movieType: IMovie;
 }
 
-export const ContentCard: React.FC<IContentCardProps> = ({
-  cardTitle,
-  cardImg,
-}) => {
+export const ContentCard: React.FC<IContentCardProps> = ({ movieType }) => {
+  const { title, image } = movieType;
   return (
     <Card>
-      <Card.Img variant="top" src={cardImg} />
+      <Card.Img variant="top" src={image} />
       <Card.Body>
-        <Card.Title>{cardTitle}</Card.Title>
+        <Card.Title>{title}</Card.Title>
       </Card.Body>
     </Card>
   );
