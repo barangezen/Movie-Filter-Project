@@ -40,29 +40,26 @@ export const Movies = () => {
   console.log("movieData", movieData);
   console.log("data", data);
   return (
-    <>
-      <Container>
-        {status === "loading" && <p>{"Loading..."}</p>}
-        {status === "error" && <p>{"Ups.. Something went wrong"}</p>}
-        {status === "success" && (
-          <>
-            <Row>
-              <Col sm={10}>
-                <MySearch
-                  buttonText="Search"
-                  placeholder="Search..."
-                  btnVariant="outline-dark"
-                />
-              </Col>
-              <Col>
-                <MyDropdownFilter dropdownName="Sort By" options={options} />
-              </Col>
-            </Row>
-            <MovieList />
-          </>
-        )}
-      </Container>
-      )
-    </>
+    <Container>
+      {status === "loading" && <p>{"Loading..."}</p>}
+      {status === "error" && <p>{"Ups.. Something went wrong"}</p>}
+      {status === "success" && (
+        <>
+          <Row>
+            <Col sm={10}>
+              <MySearch
+                buttonText="Search"
+                placeholder="Search..."
+                btnVariant="outline-dark"
+              />
+            </Col>
+            <Col>
+              <MyDropdownFilter dropdownName="Sort By" options={options} />
+            </Col>
+          </Row>
+          <MovieList />
+        </>
+      )}
+    </Container>
   );
 };
