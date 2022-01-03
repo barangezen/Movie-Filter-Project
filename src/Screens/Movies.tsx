@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import {
   IOption,
   MyDropdownFilter,
@@ -43,16 +43,17 @@ export const Movies = () => {
       {status === "success" && (
         <>
           <Row>
-            <Col sm={10}>
-              <MySearch
-                buttonText="Search"
-                placeholder="Search..."
-                btnVariant="outline-dark"
-              />
-            </Col>
-            <Col>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: "row",
+              }}
+            >
+              <MySearch placeholder="Search..." />
+
               <MyDropdownFilter dropdownName="Sort By" options={options} />
-            </Col>
+            </div>
           </Row>
           <MovieList />
         </>
