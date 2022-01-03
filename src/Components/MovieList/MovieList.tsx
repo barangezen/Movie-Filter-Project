@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { ContentCard, IMovie } from "../ContentCard/ContentCard";
 
 export const MovieList = () => {
@@ -53,16 +53,16 @@ export const MovieList = () => {
     },
   ];
   return (
-    <Container style={{ marginTop: "40px" }}>
+    <div style={{ marginTop: "40px" }}>
       <Row xs={1} md={6} className="g-4">
-        {movieList.map((movie) => {
+        {movieList.map((movie, index) => {
           return (
-            <Col>
-              <ContentCard movieType={movie} />
+            <Col key={index}>
+              <ContentCard moviesData={movie} />
             </Col>
           );
         })}
       </Row>
-    </Container>
+    </div>
   );
 };

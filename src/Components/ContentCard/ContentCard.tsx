@@ -7,11 +7,11 @@ export interface IMovie {
   releaseYear?: number;
 }
 export interface IContentCardProps {
-  movieType: IMovie;
+  moviesData: IMovie;
 }
 
-export const ContentCard: React.FC<IContentCardProps> = ({ movieType }) => {
-  const { title, image } = movieType;
+export const ContentCard: React.FC<IContentCardProps> = ({ moviesData }) => {
+  const { title, image } = moviesData;
   return (
     <Card>
       <Card.Img variant="top" src={image} />
