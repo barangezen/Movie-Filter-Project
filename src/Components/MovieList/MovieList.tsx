@@ -1,64 +1,19 @@
 import { Col, Row } from "react-bootstrap";
-import { ContentCard, IMovie } from "../ContentCard/ContentCard";
+import { IMovieData } from "../../models/MovieDataModel";
+import { ContentCard } from "../ContentCard/ContentCard";
 import styles from "./MovieList.module.scss";
-export const MovieList = () => {
-  const movieList: IMovie[] = [
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-    {
-      title: "Baran",
-      image: "https://picsum.photos/200/300",
-    },
-  ];
+
+export interface IMovieList {
+  movieList: IMovieData[];
+}
+export const MovieList: React.FC<IMovieList> = ({ movieList }) => {
   return (
     <div className={styles.container}>
       <Row xs={1} md={6} className="g-4">
-        {movieList.map((movie, index) => {
+        {movieList?.map((movie, index) => {
           return (
             <Col key={index}>
-              <ContentCard moviesData={movie} />
+              <ContentCard movieType={movie} />
             </Col>
           );
         })}
