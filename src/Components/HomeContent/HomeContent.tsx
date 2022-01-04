@@ -1,6 +1,7 @@
 import { Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { HomeCard } from "../HomeCard/HomeCard";
+import HomeCardImg from "../../assets/placeholder.png";
 export const HomeContent = () => {
   const navigate = useNavigate();
   const onClickMovies = () => {
@@ -13,12 +14,12 @@ export const HomeContent = () => {
     <Container>
       <Row>
         <HomeCard
-          cardImg={require("../../assets/placeholder.png")}
+          cardImg={HomeCardImg}
           cardText="Popular Movies"
           onClickHandler={onClickMovies}
         />
         <HomeCard
-          cardImg={require("../../assets/placeholder.png")}
+          cardImg={HomeCardImg}
           cardText="Populer Series"
           onClickHandler={onClickSeries}
         />
