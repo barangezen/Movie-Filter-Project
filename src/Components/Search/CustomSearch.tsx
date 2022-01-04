@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, FormControl } from "react-bootstrap";
-import styles from "./MySearch.module.scss";
+import styles from "./CustomSearch.module.scss";
 
 export interface IMySearchProps {
   placeholder?: string;

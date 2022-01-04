@@ -1,6 +1,6 @@
 import { Dropdown } from "react-bootstrap";
 import { BootsrapVariants } from "../../helpers/GlobalEnums";
-import styles from "./MyDropdownFilter.module.scss";
+import styles from "./CustomDropdownFilter.module.scss";
 export interface IOption {
   key: string;
   value: string;
