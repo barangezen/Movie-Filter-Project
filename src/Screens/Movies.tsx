@@ -11,12 +11,12 @@ import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/getFeedData";
 import { strings } from "../lang";
-import { IMovieData } from "../models/MovieDataModel";
+import { IProgramData } from "../models/MovieDataModel";
 
 export const Movies = () => {
   const { t } = useTranslation();
   const { data, status } = useFetch();
-  const [movieData, setMovieData] = useState<IMovieData[]>([]);
+  const [movieData, setMovieData] = useState<IProgramData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<IOption>();
   const setOptionKey = (option: IOption) => {
@@ -25,7 +25,7 @@ export const Movies = () => {
 
   useEffect(() => {
     if (inputValue === "") {
-      const movies = data?.entries.filter((movie: IMovieData) => {
+      const movies = data?.entries.filter((movie: IProgramData) => {
         return (
           movie.programType === ProgramType.Movie && movie.releaseYear >= 2010
         );

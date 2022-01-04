@@ -1,4 +1,4 @@
-export interface IMovieData {
+export interface IProgramData {
   title: string;
   description?: string;
   programType?: string;

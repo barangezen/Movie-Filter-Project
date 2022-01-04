@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { IMovieData } from "../../models/MovieDataModel";
+import { IProgramData } from "../../models/MovieDataModel";
 import { ContentCard } from "../ContentCard/ContentCard";
 import styles from "./MovieList.module.scss";
 export interface IMovieList {
-  movieList: IMovieData[];
+  movieList: IProgramData[];
 }
 
 export const MovieList: React.FC<IMovieList> = ({ movieList }) => {
@@ -14,7 +14,7 @@ export const MovieList: React.FC<IMovieList> = ({ movieList }) => {
         {movieList.map((movie, index) => {
           return (
             <Col key={index}>
-              <ContentCard movieType={movie} />
+              <ContentCard program={movie} />
             </Col>
           );
         })}
