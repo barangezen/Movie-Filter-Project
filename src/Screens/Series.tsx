@@ -6,6 +6,7 @@ import {
 } from "../Components/DropdownFilter/MyDropdownFilter";
 import { MySearch } from "../Components/Search/MySearch";
 import { SeriesList } from "../Components/SeriesList/SeriesList";
+import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/getFeedData";
 import { IMovieData } from "../models/MovieDataModel";
 
@@ -13,24 +14,11 @@ export const Series = () => {
   const { data, status } = useFetch();
   const [seriesData, setSeriesData] = useState<IMovieData[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const options: IOption[] = [
-    {
-      key: "ascTitle",
-      value: "Ascending by Title",
-    },
-    {
-      key: "descTitle",
-      value: "Descending by Title",
-    },
-    {
-      key: "ascYear",
-      value: "Ascending by Year",
-    },
-    {
-      key: "descTitle",
-      value: "Descending by Year",
-    },
-  ];
+  const [selectedOption, setSelectedOption] = useState<IOption>();
+  const setOptionKey = (option: IOption) => {
+    setSelectedOption(option);
+  };
+
   useEffect(() => {
     if (inputValue === "") {
       const series = data?.entries.filter((serie: IMovieData) => {
@@ -53,6 +41,14 @@ export const Series = () => {
       );
     }
   }, [inputValue]);
+  useEffect(() => {
+    if (selectedOption) {
+      sortByOption(selectedOption, seriesData, setSeriesData);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // For avoid re-rendering every second by  movieData
+  }, [selectedOption]);
+
   return (
     <Container>
       {status === "loading" && <p>{"Loading..."}</p>}
@@ -75,7 +71,11 @@ export const Series = () => {
                 }
               />
 
-              <MyDropdownFilter dropdownName="Sort By" options={options} />
+              <MyDropdownFilter
+                dropdownName={selectedOption?.value ?? "Sort By"}
+                options={options}
+                onSelect={setOptionKey}
+              />
             </div>
           </Row>
           <SeriesList seriesList={seriesData} />

@@ -6,6 +6,7 @@ import {
 } from "../Components/DropdownFilter/MyDropdownFilter";
 import { MovieList } from "../Components/MovieList/MovieList";
 import { MySearch } from "../Components/Search/MySearch";
+import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/getFeedData";
 import { IMovieData } from "../models/MovieDataModel";
 
@@ -13,24 +14,11 @@ export const Movies = () => {
   const { data, status } = useFetch();
   const [movieData, setMovieData] = useState<IMovieData[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const options: IOption[] = [
-    {
-      key: "ascTitle",
-      value: "Ascending by Title",
-    },
-    {
-      key: "descTitle",
-      value: "Descending by Title",
-    },
-    {
-      key: "ascYear",
-      value: "Ascending by Year",
-    },
-    {
-      key: "descTitle",
-      value: "Descending by Year",
-    },
-  ];
+  const [selectedOption, setSelectedOption] = useState<IOption>();
+  const setOptionKey = (option: IOption) => {
+    setSelectedOption(option);
+  };
+
   useEffect(() => {
     if (inputValue === "") {
       const movies = data?.entries.filter((movie: IMovieData) => {
@@ -55,6 +43,14 @@ export const Movies = () => {
     }
   }, [inputValue]);
 
+  useEffect(() => {
+    if (selectedOption) {
+      sortByOption(selectedOption, movieData, setMovieData);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // For avoid re-rendering every second by  movieData
+  }, [selectedOption]);
+
   return (
     <Container>
       {status === "loading" && <p>{"Loading..."}</p>}
@@ -77,7 +73,11 @@ export const Movies = () => {
                 }
               />
 
-              <MyDropdownFilter dropdownName="Sort By" options={options} />
+              <MyDropdownFilter
+                dropdownName={selectedOption?.value ?? "Sort By"}
+                options={options}
+                onSelect={setOptionKey}
+              />
             </div>
           </Row>
           <MovieList movieList={movieData} />
