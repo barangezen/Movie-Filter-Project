@@ -12,6 +12,7 @@ import { IMovieData } from "../models/MovieDataModel";
 export const Series = () => {
   const { data, status } = useFetch();
   const [seriesData, setSeriesData] = useState<IMovieData[]>([]);
+  const [inputValue, setInputValue] = useState("");
   const options: IOption[] = [
     {
       key: "ascTitle",
@@ -31,13 +32,27 @@ export const Series = () => {
     },
   ];
   useEffect(() => {
-    const series = data?.entries.filter((serie: any) => {
-      return serie.programType === "series" && serie.releaseYear >= 2010;
-    });
-    setSeriesData(series);
-  }, [data]);
-  console.log("seriesData", seriesData);
-  console.log("data", data);
+    if (inputValue === "") {
+      const series = data?.entries.filter((serie: IMovieData) => {
+        return serie?.programType === "series" && serie?.releaseYear >= 2010;
+      });
+      if (series) {
+        setSeriesData(series);
+      }
+    }
+  }, [data, inputValue]);
+  useEffect(() => {
+    if (inputValue.length > 2) {
+      setSeriesData((preData) =>
+        preData?.filter(
+          (i) =>
+            i.title
+              .toLocaleLowerCase()
+              .search(inputValue.toLocaleLowerCase()) !== -1
+        )
+      );
+    }
+  }, [inputValue]);
   return (
     <Container>
       {status === "loading" && <p>{"Loading..."}</p>}
