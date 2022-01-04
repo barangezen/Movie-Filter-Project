@@ -67,7 +67,13 @@ export const Series = () => {
                 flexDirection: "row",
               }}
             >
-              <MySearch placeholder="Search..." />
+              <MySearch
+                placeholder="Search..."
+                inputValue={inputValue}
+                onChangeHandler={(ev: React.ChangeEvent<HTMLInputElement>) =>
+                  setInputValue(ev.target.value)
+                }
+              />
 
               <MyDropdownFilter dropdownName="Sort By" options={options} />
             </div>
