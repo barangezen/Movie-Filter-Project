@@ -1,5 +1,5 @@
 import { IOption } from "../Components/DropdownFilter/CustomDropdownFilter";
-import { IMovieData } from "../models/MovieDataModel";
+import { IProgramData } from "../models/MovieDataModel";
 import { FilterOptionsKey } from "./GlobalEnums";
 
 export const options: IOption[] = [
@@ -23,8 +23,8 @@ export const options: IOption[] = [
 
 export const sortByOption = (
   option: IOption,
-  data: IMovieData[],
-  setFilteredData: React.Dispatch<React.SetStateAction<IMovieData[]>>
+  data: IProgramData[],
+  setFilteredData: React.Dispatch<React.SetStateAction<IProgramData[]>>
 ) => {
   switch (option.key) {
     case FilterOptionsKey.AscTitle:

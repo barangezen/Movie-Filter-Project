@@ -1,13 +1,13 @@
 import { Card } from "react-bootstrap";
-import { IMovieData } from "../../models/MovieDataModel";
+import { IProgramData } from "../../models/MovieDataModel";
 import styles from "./ContentCard.module.scss";
 
 export interface IContentCardProps {
-  movieType: IMovieData;
+  program: IProgramData;
 }
 
-export const ContentCard: React.FC<IContentCardProps> = ({ movieType }) => {
-  const { title, images } = movieType;
+export const ContentCard: React.FC<IContentCardProps> = ({ program }) => {
+  const { title, images } = program;
   return (
     <Card>
       <Card.Img variant="top" src={images["Poster Art"]?.url} />

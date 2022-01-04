@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { IMovieData } from "../../models/MovieDataModel";
+import { IProgramData } from "../../models/MovieDataModel";
 import { ContentCard } from "../ContentCard/ContentCard";
 import styles from "./SeriesList.module.scss";
 export interface ISeriesList {
-  seriesList: IMovieData[];
+  seriesList: IProgramData[];
 }
 
 export const SeriesList: React.FC<ISeriesList> = ({ seriesList }) => {
@@ -14,7 +14,7 @@ export const SeriesList: React.FC<ISeriesList> = ({ seriesList }) => {
         {seriesList.map((serie) => {
           return (
             <Col>
-              <ContentCard movieType={serie} />
+              <ContentCard program={serie} />
             </Col>
           );
         })}
