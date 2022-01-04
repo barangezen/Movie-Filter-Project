@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-
+import styles from "./HomeCard.module.scss";
 export interface IHomeCardProps {
   cardImg: string;
   cardText: string;
@@ -12,13 +12,13 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
   onClickHandler,
 }) => {
   return (
-    <Card style={{ width: "14rem", marginTop: "3rem", border: "none" }}>
+    <Card className={styles.container}>
       <Card.Img
         variant="top"
         src={cardImg}
         alt="placeholder"
         onClick={onClickHandler}
-        style={{ backgroundColor: "black", height: "100%" }}
+        className={styles.cardImg}
       />
       <Card.Body>
         <Card.Text>{cardText}</Card.Text>

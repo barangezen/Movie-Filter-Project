@@ -1,5 +1,5 @@
 import { Dropdown } from "react-bootstrap";
-import "./MyDropdownFilter.css";
+import styles from "./MyDropdownFilter.module.scss";
 export interface IOption {
   key: string;
   value: string;
@@ -15,7 +15,7 @@ export const MyDropdownFilter: React.FC<IMyDropdownFilterProps> = ({
   className,
 }) => {
   return (
-    <Dropdown className={"dropDownStyle"}>
+    <Dropdown className={styles.dropDownStyle}>
       <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
         {dropdownName}
       </Dropdown.Toggle>
