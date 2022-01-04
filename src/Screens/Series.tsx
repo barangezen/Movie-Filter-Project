@@ -7,10 +7,11 @@ import {
 import { MySearch } from "../Components/Search/MySearch";
 import { SeriesList } from "../Components/SeriesList/SeriesList";
 import useFetch from "../hooks/getFeedData";
+import { IMovieData } from "../models/MovieDataModel";
 
 export const Series = () => {
-  const [seriesData, setSeriesData] = useState();
   const { data, status } = useFetch();
+  const [seriesData, setSeriesData] = useState<IMovieData[]>([]);
   const options: IOption[] = [
     {
       key: "ascTitle",
@@ -56,7 +57,7 @@ export const Series = () => {
               <MyDropdownFilter dropdownName="Sort By" options={options} />
             </div>
           </Row>
-          <SeriesList />
+          <SeriesList seriesList={seriesData} />
         </>
       )}
     </Container>

@@ -1,21 +1,16 @@
 import { Card } from "react-bootstrap";
+import { IMovieData } from "../../models/MovieDataModel";
 import styles from "./ContentCard.module.scss";
-export interface IMovie {
-  title: string;
-  description?: string;
-  image: string;
-  programType?: string;
-  releaseYear?: number;
-}
+
 export interface IContentCardProps {
-  moviesData: IMovie;
+  movieType: IMovieData;
 }
 
-export const ContentCard: React.FC<IContentCardProps> = ({ moviesData }) => {
-  const { title, image } = moviesData;
+export const ContentCard: React.FC<IContentCardProps> = ({ movieType }) => {
+  const { title, images } = movieType;
   return (
     <Card>
-      <Card.Img variant="top" src={image} />
+      <Card.Img variant="top" src={images["Poster Art"]?.url} />
       <Card.Body>
         <Card.Title title={title} className={styles.cardTitle}>
           {title}
