@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { ContentCard, IMovie } from "../ContentCard/ContentCard";
-
+import styles from "./MovieList.module.scss";
 export const MovieList = () => {
   const movieList: IMovie[] = [
     {
@@ -53,7 +53,7 @@ export const MovieList = () => {
     },
   ];
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div className={styles.container}>
       <Row xs={1} md={6} className="g-4">
         {movieList.map((movie, index) => {
           return (

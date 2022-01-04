@@ -1,4 +1,5 @@
 import { Card } from "react-bootstrap";
+import styles from "./ContentCard.module.scss";
 export interface IMovie {
   title: string;
   description?: string;
@@ -16,7 +17,9 @@ export const ContentCard: React.FC<IContentCardProps> = ({ moviesData }) => {
     <Card>
       <Card.Img variant="top" src={image} />
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title title={title} className={styles.cardTitle}>
+          {title}
+        </Card.Title>
       </Card.Body>
     </Card>
   );
