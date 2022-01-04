@@ -2,7 +2,7 @@ import { Button, Container, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { BootsrapVariants } from "../../helpers/GlobalEnums";
 import { strings } from "../../lang";
-import styles from "./MyHeader.module.scss";
+import styles from "./CustomHeader.module.scss";
 
 export const MyHeader = () => {
   const { t } = useTranslation();

@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import {
   IOption,
   MyDropdownFilter,
-} from "../Components/DropdownFilter/MyDropdownFilter";
+} from "../Components/DropdownFilter/CustomDropdownFilter";
 import { MovieList } from "../Components/MovieList/MovieList";
-import { MySearch } from "../Components/Search/MySearch";
+import { MySearch } from "../Components/Search/CustomSearch";
 import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/getFeedData";
