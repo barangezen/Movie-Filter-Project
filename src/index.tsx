@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Components/App/App";
+import "./lang/i18n";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Suspense fallback={"Loading Pankod Challange ..."}>
     <App />
-  </React.StrictMode>,
+  </Suspense>,
   document.getElementById("root")
 );

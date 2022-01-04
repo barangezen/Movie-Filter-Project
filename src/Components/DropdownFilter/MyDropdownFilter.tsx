@@ -1,4 +1,5 @@
 import { Dropdown } from "react-bootstrap";
+import { BootsrapVariants } from "../../helpers/GlobalEnums";
 import styles from "./MyDropdownFilter.module.scss";
 export interface IOption {
   key: string;
@@ -18,7 +19,10 @@ export const MyDropdownFilter: React.FC<IMyDropdownFilterProps> = ({
 }) => {
   return (
     <Dropdown className={styles.dropDownStyle}>
-      <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+      <Dropdown.Toggle
+        variant={BootsrapVariants.OutlineDark}
+        id="dropdown-basic"
+      >
         {dropdownName}
       </Dropdown.Toggle>
 

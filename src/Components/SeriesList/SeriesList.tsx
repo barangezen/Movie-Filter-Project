@@ -1,3 +1,4 @@
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { IMovieData } from "../../models/MovieDataModel";
 import { ContentCard } from "../ContentCard/ContentCard";
@@ -10,9 +11,9 @@ export const SeriesList: React.FC<ISeriesList> = ({ seriesList }) => {
   return (
     <div className={styles.container}>
       <Row xs={1} md={6} className="g-4">
-        {seriesList?.map((serie, index) => {
+        {seriesList.map((serie) => {
           return (
-            <Col key={index}>
+            <Col>
               <ContentCard movieType={serie} />
             </Col>
           );

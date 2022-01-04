@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import {
   IOption,
   MyDropdownFilter,
 } from "../Components/DropdownFilter/MyDropdownFilter";
 import { MovieList } from "../Components/MovieList/MovieList";
 import { MySearch } from "../Components/Search/MySearch";
+import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/getFeedData";
+import { strings } from "../lang";
 import { IMovieData } from "../models/MovieDataModel";
 
 export const Movies = () => {
+  const { t } = useTranslation();
   const { data, status } = useFetch();
   const [movieData, setMovieData] = useState<IMovieData[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -22,7 +26,9 @@ export const Movies = () => {
   useEffect(() => {
     if (inputValue === "") {
       const movies = data?.entries.filter((movie: IMovieData) => {
-        return movie.programType === "movie" && movie.releaseYear >= 2010;
+        return (
+          movie.programType === ProgramType.Movie && movie.releaseYear >= 2010
+        );
       });
       if (movies) {
         setMovieData(movies);
@@ -53,9 +59,13 @@ export const Movies = () => {
 
   return (
     <Container>
-      {status === "loading" && <p>{"Loading..."}</p>}
-      {status === "error" && <p>{"Ups.. Something went wrong"}</p>}
-      {status === "success" && (
+      {status === ReactQueryStatus.Loading && (
+        <p>{t(strings.queryStatus.loading)}</p>
+      )}
+      {status === ReactQueryStatus.Error && (
+        <p>{t(strings.queryStatus.error)}</p>
+      )}
+      {status === ReactQueryStatus.Success && (
         <>
           <Row>
             <div
@@ -66,7 +76,7 @@ export const Movies = () => {
               }}
             >
               <MySearch
-                placeholder={"Search.."}
+                placeholder={t(strings.filter.searchPlaceholder)}
                 inputValue={inputValue}
                 onChangeHandler={(ev: React.ChangeEvent<HTMLInputElement>) =>
                   setInputValue(ev.target.value)
@@ -74,7 +84,7 @@ export const Movies = () => {
               />
 
               <MyDropdownFilter
-                dropdownName={selectedOption?.value ?? "Sort By"}
+                dropdownName={selectedOption?.value ?? t(strings.filter.sortBy)}
                 options={options}
                 onSelect={setOptionKey}
               />
