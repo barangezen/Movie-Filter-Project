@@ -1,0 +1,27 @@
+{
+  "header": {
+    "demoStreaming": "DEMO Streaming",
+    "popularTitles": "Popular Titles"
+  },
+  "homeContent": {
+    "popularMovies": "Popular Movies",
+    "popularSeries": "Popular Series"
+  },
+  "queryStatus": {
+    "loading": "Loading...",
+    "error": "Ups.. Something went wrong"
+  },
+  "filter": {
+    "sortBy": "Sort By",
+    "searchPlaceholder": "Search..."
+  },
+  "footer": {
+    "home": "Home",
+    "termsAndConditions": "Terms and Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "collectionStatement": "Collection Statement",
+    "help": "Help",
+    "manageAccount": "Manage Account",
+    "copyRight": "Copyright © Baran Gezenoğlu. All right reserved."
+  }
+}
