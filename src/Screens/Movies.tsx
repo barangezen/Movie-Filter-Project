@@ -17,7 +17,7 @@ import { AppService } from "../services/app.service";
 export const Movies = () => {
   const { t } = useTranslation();
   const { data, status } = useFetch<IProgramData>(AppService.get);
-  const [movieData, setMovieData] = useState<IProgramData[]>([]);
+  const [moviesData, setMoviesData] = useState<IProgramData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<IOption>();
   const setOptionKey = (option: IOption) => {
@@ -25,35 +25,32 @@ export const Movies = () => {
   };
 
   useEffect(() => {
-    if (inputValue === "") {
-      const movies = data?.entries.filter((movie: IProgramData) => {
+    if (!data) {
+      return;
+    }
+    let movies = [];
+
+    if (inputValue.length > 2) {
+      movies = data.entries.filter(
+        (movie) =>
+          movie.title
+            .toLocaleLowerCase()
+            .search(inputValue.toLocaleLowerCase()) !== -1
+      );
+    } else {
+      movies = data?.entries.filter((movie: IProgramData) => {
         return (
           movie.programType === ProgramType.Movie && movie.releaseYear >= 2010
         );
       });
-      if (movies) {
-        setMovieData(movies);
-      }
     }
+    setMoviesData(movies.slice(0, 21));
   }, [data, inputValue]);
 
   useEffect(() => {
-    if (inputValue.length > 2) {
-      setMovieData((preData) =>
-        preData?.filter(
-          (movie) =>
-            movie.title
-              .toLocaleLowerCase()
-              .search(inputValue.toLocaleLowerCase()) !== -1
-        )
-      );
-    }
-  }, [inputValue]);
-
-  useEffect(() => {
     if (selectedOption) {
-      const sortedMovies = sortByOption(selectedOption, movieData);
-      setMovieData(sortedMovies);
+      const sortedMovies = sortByOption(selectedOption, moviesData);
+      setMoviesData(sortedMovies);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption]);
@@ -91,7 +88,7 @@ export const Movies = () => {
               />
             </div>
           </Row>
-          <ProgramList programList={movieData} />
+          <ProgramList programList={moviesData} />
         </>
       )}
     </Container>

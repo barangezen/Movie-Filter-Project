@@ -48,7 +48,7 @@ export const Series = () => {
       });
     }
 
-    setSeriesData(series);
+    setSeriesData(series.slice(0, 21));
   }, [data, inputValue]);
 
   useEffect(() => {
