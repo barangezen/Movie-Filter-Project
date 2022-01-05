@@ -8,39 +8,43 @@ import appstore from "../../assets/store/app-store.svg";
 import playstore from "../../assets/store/play-store.svg";
 import windowstore from "../../assets/store/windows-store.svg";
 import { Container } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+import { strings } from "../../lang";
+
 export const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer>
       <Container className={styles.footer}>
         <div className={styles.footerNav}>
           <ul>
-            <li>Home</li>
-            <li>Terms and Conditions</li>
-            <li>Privacy Policy</li>
-            <li>Collection Statement</li>
-            <li>Help</li>
-            <li>Manage Account</li>
+            <li>{t(strings.footer.home)}</li>
+            <li>{t(strings.footer.termsAndConditions)}</li>
+            <li>{t(strings.footer.privacyPolicy)}</li>
+            <li>{t(strings.footer.collectionStatement)}</li>
+            <li>{t(strings.footer.help)}</li>
+            <li>{t(strings.footer.manageAccount)}</li>
           </ul>
         </div>
         <div className={styles.copyright}>
-          <p>Copyright © Baran Gezenoğlu. All right reserved.</p>
+          <p>{t(strings.footer.copyRight)}</p>
         </div>
         <div className={styles.socials}>
           <div className={styles.icons}>
             <a href={"#"}>
-              <img src={facebook} alt="" />
+              <img src={facebook} alt="facebookImage" />
             </a>
             <a href={"#"}>
-              <img src={twitter} alt="" />
+              <img src={twitter} alt="twitterImage" />
             </a>
             <a href={"#"}>
-              <img src={instagram} alt="" />
+              <img src={instagram} alt="instagramImage" />
             </a>
           </div>
           <div className={styles.downloads}>
-            <img src={appstore} alt="" />
-            <img src={windowstore} alt="" />
-            <img src={playstore} alt="" />
+            <img src={appstore} alt="appstoreImage" />
+            <img src={windowstore} alt="windowstoreImage" />
+            <img src={playstore} alt="playstoreImage" />
           </div>
         </div>
       </Container>

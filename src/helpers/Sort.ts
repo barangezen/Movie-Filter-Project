@@ -21,31 +21,26 @@ export const options: IOption[] = [
   },
 ];
 
-export const sortByOption = (
-  option: IOption,
-  data: IProgramData[],
-  setFilteredData: React.Dispatch<React.SetStateAction<IProgramData[]>>
-) => {
+export const sortByOption = (option: IOption, data: IProgramData[]) => {
   switch (option.key) {
     case FilterOptionsKey.AscTitle:
-      return setFilteredData(
-        [...data].sort((first, second) => (first.title < second.title ? -1 : 1))
+      return [...data].sort((first, second) =>
+        first.title < second.title ? -1 : 1
       );
     case FilterOptionsKey.DscTitle:
-      return setFilteredData(
-        [...data].sort((first, second) => (first.title > second.title ? -1 : 1))
+      return [...data].sort((first, second) =>
+        first.title > second.title ? -1 : 1
       );
     case FilterOptionsKey.AscYear:
-      return setFilteredData(
-        [...data].sort(
-          (first, second) => first.releaseYear - second.releaseYear
-        )
+      return [...data].sort(
+        (first, second) => first.releaseYear - second.releaseYear
       );
     case FilterOptionsKey.DscYear:
-      return setFilteredData(
-        [...data].sort(
-          (first, second) => -(first.releaseYear - second.releaseYear)
-        )
+      return [...data].sort(
+        (first, second) => -(first.releaseYear - second.releaseYear)
       );
+
+    default:
+      return [];
   }
 };

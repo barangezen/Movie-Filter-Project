@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { IProgramData } from "../../models/MovieDataModel";
 import { ContentCard } from "../ContentCard/ContentCard";
 import styles from "./SeriesList.module.scss";
+
 export interface ISeriesList {
   seriesList: IProgramData[];
 }
