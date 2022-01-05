@@ -8,6 +8,8 @@ First, run the project in local server with :
 
 Open http://localhost:3000 with your browser to see the result.
 
+Also you can try https://baran-frontend-challenge.netlify.app/ with online.
+
 Build the project: 
 
 ### `npm run build`
