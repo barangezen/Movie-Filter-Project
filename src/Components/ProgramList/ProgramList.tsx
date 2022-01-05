@@ -12,9 +12,9 @@ export const ProgramList: React.FC<ISeriesList> = ({ programList }) => {
   return (
     <div className={styles.container}>
       <Row xs={1} md={6} className="g-4">
-        {programList.map((program) => {
+        {programList.map((program, index) => {
           return (
-            <Col>
+            <Col key={index}>
               <ContentCard program={program} />
             </Col>
           );
