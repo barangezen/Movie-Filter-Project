@@ -14,8 +14,6 @@ Build the project:
 
 ## Dependencies
 
--Typescript for .
-
 -React Query for state management.
 
 -React Router Dom for routing.
