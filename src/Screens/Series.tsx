@@ -9,51 +9,54 @@ import { MySearch } from "../Components/Search/CustomSearch";
 import { SeriesList } from "../Components/SeriesList/SeriesList";
 import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
-import useFetch from "../hooks/getFeedData";
+import useFetch from "../hooks/fetch";
 import { strings } from "../lang";
 import { IProgramData } from "../models/MovieDataModel";
+import { AppService } from "../services/app.service";
 
 export const Series = () => {
   const { t } = useTranslation();
-  const { data, status } = useFetch();
+  const { data, status } = useFetch<IProgramData>(AppService.get);
   const [seriesData, setSeriesData] = useState<IProgramData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<IOption>();
+
   const setOptionKey = (option: IOption) => {
     setSelectedOption(option);
   };
 
   useEffect(() => {
-    if (inputValue === "") {
-      const series = data?.entries.filter((serie: IProgramData) => {
+    if (!data) {
+      return;
+    }
+
+    let series = [];
+
+    if (inputValue.length > 2) {
+      series = data.entries.filter(
+        (serie) =>
+          serie.title
+            .toLocaleLowerCase()
+            .search(inputValue.toLocaleLowerCase()) !== -1
+      );
+    } else {
+      series = data?.entries.filter((serie: IProgramData) => {
         return (
           serie?.programType === ProgramType.Series &&
           serie?.releaseYear >= 2010
         );
       });
-      if (series) {
-        setSeriesData(series);
-      }
     }
+
+    setSeriesData(series);
   }, [data, inputValue]);
-  useEffect(() => {
-    if (inputValue.length > 2) {
-      setSeriesData((preData) =>
-        preData?.filter(
-          (i) =>
-            i.title
-              .toLocaleLowerCase()
-              .search(inputValue.toLocaleLowerCase()) !== -1
-        )
-      );
-    }
-  }, [inputValue]);
+
   useEffect(() => {
     if (selectedOption) {
-      sortByOption(selectedOption, seriesData, setSeriesData);
+      const sortedSeries = sortByOption(selectedOption, seriesData);
+      setSeriesData(sortedSeries);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // For avoid re-rendering every second by  movieData
   }, [selectedOption]);
 
   return (

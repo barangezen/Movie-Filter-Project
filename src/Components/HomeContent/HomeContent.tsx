@@ -4,15 +4,19 @@ import { HomeCard } from "../HomeCard/HomeCard";
 import HomeCardImg from "../../assets/placeholder.png";
 import { useTranslation } from "react-i18next";
 import { strings } from "../../lang";
+
 export const HomeContent = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const onClickMovies = () => {
-    navigate(`/movies/`);
+    navigate(`/movies`);
   };
+
   const onClickSeries = () => {
-    navigate(`/series/`);
+    navigate(`/series`);
   };
+
   return (
     <Container>
       <Row>

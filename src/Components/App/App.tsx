@@ -10,6 +10,7 @@ import { Series } from "../../Screens/Series";
 
 function App() {
   const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

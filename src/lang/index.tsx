@@ -17,4 +17,13 @@ export const strings: ITranslationsString = {
     sortBy: "filter.sortBy",
     searchPlaceholder: "filter.searchPlaceholder",
   },
+  footer: {
+    home: "footer.home",
+    termsAndConditions: "footer.termsAndConditions",
+    privacyPolicy: "footer.privacyPolicy",
+    collectionStatement: "footer.collectionStatement",
+    help: "footer.help",
+    manageAccount: "footer.manageAccount",
+    copyRight: "footer.copyRight",
+  },
 };

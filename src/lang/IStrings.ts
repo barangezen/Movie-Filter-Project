@@ -15,4 +15,13 @@ export interface ITranslationsString {
     sortBy: string;
     searchPlaceholder: string;
   };
+  footer: {
+    home: string;
+    termsAndConditions: string;
+    privacyPolicy: string;
+    collectionStatement: string;
+    help: string;
+    manageAccount: string;
+    copyRight: string;
+  };
 }

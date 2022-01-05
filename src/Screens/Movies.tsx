@@ -9,13 +9,14 @@ import { MovieList } from "../Components/MovieList/MovieList";
 import { MySearch } from "../Components/Search/CustomSearch";
 import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
-import useFetch from "../hooks/getFeedData";
+import useFetch from "../hooks/fetch";
 import { strings } from "../lang";
 import { IProgramData } from "../models/MovieDataModel";
+import { AppService } from "../services/app.service";
 
 export const Movies = () => {
   const { t } = useTranslation();
-  const { data, status } = useFetch();
+  const { data, status } = useFetch<IProgramData>(AppService.get);
   const [movieData, setMovieData] = useState<IProgramData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<IOption>();
@@ -51,10 +52,10 @@ export const Movies = () => {
 
   useEffect(() => {
     if (selectedOption) {
-      sortByOption(selectedOption, movieData, setMovieData);
+      const sortedMovies = sortByOption(selectedOption, movieData);
+      setMovieData(sortedMovies);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // For avoid re-rendering every second by  movieData
   }, [selectedOption]);
 
   return (

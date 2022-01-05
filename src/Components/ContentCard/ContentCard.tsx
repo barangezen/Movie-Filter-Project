@@ -8,6 +8,7 @@ export interface IContentCardProps {
 
 export const ContentCard: React.FC<IContentCardProps> = ({ program }) => {
   const { title, images } = program;
+
   return (
     <Card>
       <Card.Img variant="top" src={images["Poster Art"]?.url} />

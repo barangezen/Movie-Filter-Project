@@ -14,5 +14,14 @@
   "filter": {
     "sortBy": "Sort By",
     "searchPlaceholder": "Search..."
+  },
+  "footer": {
+    "home": "Home",
+    "termsAndConditions": "Terms and Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "collectionStatement": "Collection Statement",
+    "help": "Help",
+    "manageAccount": "Manage Account",
+    "copyRight": "Copyright © Baran Gezenoğlu. All right reserved."
   }
 }
