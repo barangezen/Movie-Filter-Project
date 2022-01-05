@@ -5,8 +5,8 @@ import {
   IOption,
   MyDropdownFilter,
 } from "../Components/DropdownFilter/CustomDropdownFilter";
+import { ProgramList } from "../Components/ProgramList/ProgramList";
 import { MySearch } from "../Components/Search/CustomSearch";
-import { SeriesList } from "../Components/SeriesList/SeriesList";
 import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/fetch";
@@ -92,7 +92,7 @@ export const Series = () => {
               />
             </div>
           </Row>
-          <SeriesList seriesList={seriesData} />
+          <ProgramList programList={seriesData} />
         </>
       )}
     </Container>

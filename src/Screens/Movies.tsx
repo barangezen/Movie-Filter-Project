@@ -5,7 +5,7 @@ import {
   IOption,
   MyDropdownFilter,
 } from "../Components/DropdownFilter/CustomDropdownFilter";
-import { MovieList } from "../Components/MovieList/MovieList";
+import { ProgramList } from "../Components/ProgramList/ProgramList";
 import { MySearch } from "../Components/Search/CustomSearch";
 import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
@@ -91,7 +91,7 @@ export const Movies = () => {
               />
             </div>
           </Row>
-          <MovieList movieList={movieData} />
+          <ProgramList programList={movieData} />
         </>
       )}
     </Container>
