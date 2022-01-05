@@ -1,5 +1,5 @@
 ### What is this project ?
-Aa challange for pankod.
+A challenge for pankod.
 
 ## Getting Started
 First, run the project in local server with : 
