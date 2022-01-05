@@ -42,4 +42,10 @@ Build the project:
     │   └── screens             # Screens files
     │   └── services            # App services files
     
-    
+## Custom Hooks
+
+```javascript
+export default function useFetch<T>(getFunction: () => Promise<any>) {
+  return useQuery<{ total: number; entries: T[] }>("data", getFunction);
+}
+```
