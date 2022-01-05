@@ -2,20 +2,20 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { IProgramData } from "../../models/MovieDataModel";
 import { ContentCard } from "../ContentCard/ContentCard";
-import styles from "./SeriesList.module.scss";
+import styles from "./ProgramList.module.scss";
 
 export interface ISeriesList {
-  seriesList: IProgramData[];
+  programList: IProgramData[];
 }
 
-export const SeriesList: React.FC<ISeriesList> = ({ seriesList }) => {
+export const ProgramList: React.FC<ISeriesList> = ({ programList }) => {
   return (
     <div className={styles.container}>
       <Row xs={1} md={6} className="g-4">
-        {seriesList.map((serie) => {
+        {programList.map((program) => {
           return (
             <Col>
-              <ContentCard program={serie} />
+              <ContentCard program={program} />
             </Col>
           );
         })}
