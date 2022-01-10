@@ -1,56 +1,57 @@
 import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 import {
   IOption,
   MyDropdownFilter,
 } from "../Components/DropdownFilter/CustomDropdownFilter";
 import { ProgramList } from "../Components/ProgramList/ProgramList";
 import { MySearch } from "../Components/Search/CustomSearch";
-import { ProgramType, ReactQueryStatus } from "../helpers/GlobalEnums";
+import { ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/fetch";
 import { strings } from "../lang";
 import { IProgramData } from "../models/MovieDataModel";
 import { AppService } from "../services/app.service";
 
-export const Movies = () => {
+export const Program = () => {
   const { t } = useTranslation();
+  const { programType } = useParams();
   const { data, status } = useFetch<IProgramData>(AppService.get);
-  const [moviesData, setMoviesData] = useState<IProgramData[]>([]);
+  const [programData, setProgramData] = useState<IProgramData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<IOption>();
   const setOptionKey = (option: IOption) => {
     setSelectedOption(option);
   };
-
   useEffect(() => {
     if (!data) {
       return;
     }
-    let movies = [];
+    let programs = [];
 
     if (inputValue.length > 2) {
-      movies = data.entries.filter(
-        (movie) =>
-          movie.title
+      programs = data.entries.filter(
+        (program) =>
+          program.title
             .toLocaleLowerCase()
             .search(inputValue.toLocaleLowerCase()) !== -1
       );
     } else {
-      movies = data?.entries.filter((movie: IProgramData) => {
+      programs = data?.entries.filter((program: IProgramData) => {
         return (
-          movie.programType === ProgramType.Movie && movie.releaseYear >= 2010
+          program.programType === programType && program.releaseYear >= 2010
         );
       });
     }
-    setMoviesData(movies.slice(0, 21));
-  }, [data, inputValue]);
+    setProgramData(programs.slice(0, 21));
+  }, [data, inputValue, programType]);
 
   useEffect(() => {
     if (selectedOption) {
-      const sortedMovies = sortByOption(selectedOption, moviesData);
-      setMoviesData(sortedMovies);
+      const sortedMovies = sortByOption(selectedOption, programData);
+      setProgramData(sortedMovies);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption]);
@@ -88,7 +89,7 @@ export const Movies = () => {
               />
             </div>
           </Row>
-          <ProgramList programList={moviesData} />
+          <ProgramList programList={programData} />
         </>
       )}
     </Container>
