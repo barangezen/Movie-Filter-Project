@@ -10,7 +10,7 @@ export const HomeContent = () => {
   const navigate = useNavigate();
 
   const onClickMovies = () => {
-    navigate(`/movies`);
+    navigate(`/movie`);
   };
 
   const onClickSeries = () => {

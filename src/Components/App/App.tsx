@@ -5,8 +5,7 @@ import "./App.css";
 import { Footer } from "../Footer/Footer";
 import { MyHeader } from "../Header/CustomHeader";
 import { Home } from "../../Screens/Home";
-import { Movies } from "../../Screens/Movies";
-import { Series } from "../../Screens/Series";
+import { Program } from "../../Screens/Program";
 
 function App() {
   const queryClient = new QueryClient();
@@ -17,8 +16,7 @@ function App() {
         <MyHeader />
         <Routes>
           <Route index element={<Home />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="series" element={<Series />} />
+          <Route path="/:programType" element={<Program />} />
         </Routes>
         <Footer />
       </BrowserRouter>
