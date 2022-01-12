@@ -1,5 +1,5 @@
 ### What is this project ?
-A challenge for pankod.
+It's a simple movie filtering project
 
 ## Getting Started
 First, run the project in local server with : 
