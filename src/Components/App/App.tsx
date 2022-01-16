@@ -1,12 +1,11 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import { Home } from "../../screens/Home";
+import { Program } from "../../screens/Program";
 import { Footer } from "../Footer/Footer";
 import { MyHeader } from "../Header/CustomHeader";
-import { Home } from "../../Screens/Home";
-import { Program } from "../../Screens/Program";
-
+import "./App.css";
 function App() {
   const queryClient = new QueryClient();
 

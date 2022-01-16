@@ -1,4 +1,4 @@
-import { IOption } from "../Components/DropdownFilter/CustomDropdownFilter";
+import { IOption } from "../components/DropdownFilter/CustomDropdownFilter";
 import { IProgramData } from "../models/MovieDataModel";
 import { FilterOptionsKey } from "./GlobalEnums";
 
