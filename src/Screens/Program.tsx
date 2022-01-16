@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 import {
   IOption,
   MyDropdownFilter,
-} from "../Components/DropdownFilter/CustomDropdownFilter";
-import { ProgramList } from "../Components/ProgramList/ProgramList";
-import { MySearch } from "../Components/Search/CustomSearch";
+} from "../components/DropdownFilter/CustomDropdownFilter";
+import { ProgramList } from "../components/ProgramList/ProgramList";
+import { MySearch } from "../components/Search/CustomSearch";
 import { ReactQueryStatus } from "../helpers/GlobalEnums";
 import { options, sortByOption } from "../helpers/Sort";
 import useFetch from "../hooks/fetch";
